@@ -8,13 +8,13 @@ function InputBox({
   onCurrencyChange,
   currencyOptions = [],
   selectedCurrency = "USD",
-  // amountDisabled = false,
-  // currencyDisabled = false,
+  amountDisabled = false,
+  currencyDisabled = false,
   className = "",
 }) {
   const handleAmountChange = (e) => {
     const newValue = e.target.value;
-    if (newValue >= 0 || newValue === "" || isNaN(newValue)) {
+    if (newValue >= 0 || isNaN(newValue)) {
       // Allow positive values or empty string
       onAmountChange(newValue);
     }
@@ -31,7 +31,7 @@ function InputBox({
           type="number"
           className="outline-none w-full bg-transparent py-1.5"
           placeholder="Amount"
-          // disabled={amountDisabled}
+          disabled={amountDisabled}
           value={amount}
           onChange={handleAmountChange}
         />
@@ -44,7 +44,7 @@ function InputBox({
           onChange={(e) => {
             onCurrencyChange && onCurrencyChange(e.target.value);
           }}
-          // disabled={currencyDisabled}
+          disabled={currencyDisabled}
         >
           {currencyOptions.map((currency) => (
             <option key={currency} value={currency}>
