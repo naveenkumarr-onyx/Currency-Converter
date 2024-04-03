@@ -15,7 +15,6 @@ function InputBox({
   const handleAmountChange = (e) => {
     const newValue = e.target.value;
     if (newValue >= 0 || isNaN(newValue)) {
-      // Allow positive values or empty string
       onAmountChange(newValue);
     }
   };
